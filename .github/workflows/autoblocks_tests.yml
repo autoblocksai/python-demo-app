@@ -34,7 +34,7 @@ jobs:
         run: poetry install
 
       - name: Create CI Metadata
-        run: npx testing setup-ci-context
+        run: npx autoblocks testing setup-ci-context
         env:
           AUTOBLOCKS_V2_API_KEY: ${{ secrets.AUTOBLOCKS_V2_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
