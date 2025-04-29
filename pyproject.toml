@@ -7,7 +7,12 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
+autoblocksai = "^0.0.119"
+openai = "^1.76.0"
 
+[tool.poetry.scripts]
+# This will execute the run() function in my_project/run.py
+run_tests = "tests.test:run_tests"
 
 [build-system]
 requires = ["poetry-core"]
