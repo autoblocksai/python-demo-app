@@ -2,7 +2,6 @@ import os
 from typing import Literal
 from openai import AsyncOpenAI
 from opentelemetry import trace
-from opentelemetry.trace import SpanKind
 
 from autoblocks.tracer import init_auto_tracer
 from autoblocks.tracer import trace_app

@@ -10,6 +10,9 @@ python = "^3.12"
 autoblocksai = "^0.0.119"
 openai = "^1.76.0"
 
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^4.0.0"
+
 [tool.poetry.scripts]
 # This will execute the run() function in my_project/run.py
 run_tests = "tests.test:run_tests"
@@ -17,3 +20,14 @@ run_tests = "tests.test:run_tests"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 120
+
+[tool.ruff]
+lint.select = ["E", "F", "I001"]
+line-length = 120
+
+[tool.ruff.lint.isort]
+force-single-line = true
+known-first-party = ["python_demo_app"]
