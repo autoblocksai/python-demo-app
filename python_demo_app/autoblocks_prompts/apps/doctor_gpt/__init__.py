@@ -4,9 +4,10 @@ from typing import Optional
 
 from . import prompts
 
+
 def clinical_answerer_prompt_manager(
     major_version: Optional[str] = None,
-    minor_version: str = '0',
+    minor_version: str = "0",
     api_key: Optional[str] = None,
     init_timeout: Optional[float] = None,
     refresh_timeout: Optional[float] = None,
@@ -21,9 +22,10 @@ def clinical_answerer_prompt_manager(
         refresh_interval=refresh_interval,
     )
 
+
 def doctor_intent_classifier_prompt_manager(
     major_version: Optional[str] = None,
-    minor_version: str = '0',
+    minor_version: str = "0",
     api_key: Optional[str] = None,
     init_timeout: Optional[float] = None,
     refresh_timeout: Optional[float] = None,
@@ -38,9 +40,10 @@ def doctor_intent_classifier_prompt_manager(
         refresh_interval=refresh_interval,
     )
 
+
 def patient_history_summarizer_prompt_manager(
     major_version: Optional[str] = None,
-    minor_version: str = '0',
+    minor_version: str = "0",
     api_key: Optional[str] = None,
     init_timeout: Optional[float] = None,
     refresh_timeout: Optional[float] = None,
@@ -55,9 +58,10 @@ def patient_history_summarizer_prompt_manager(
         refresh_interval=refresh_interval,
     )
 
+
 def soap_generator_prompt_manager(
     major_version: Optional[str] = None,
-    minor_version: str = '0',
+    minor_version: str = "0",
     api_key: Optional[str] = None,
     init_timeout: Optional[float] = None,
     refresh_timeout: Optional[float] = None,
@@ -72,9 +76,10 @@ def soap_generator_prompt_manager(
         refresh_interval=refresh_interval,
     )
 
+
 def visit_summary_writer_prompt_manager(
     major_version: Optional[str] = None,
-    minor_version: str = '0',
+    minor_version: str = "0",
     api_key: Optional[str] = None,
     init_timeout: Optional[float] = None,
     refresh_timeout: Optional[float] = None,

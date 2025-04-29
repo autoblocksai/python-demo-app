@@ -4,9 +4,10 @@ from typing import Optional
 
 from . import prompts
 
+
 def soap_note_generator_prompt_manager(
     major_version: Optional[str] = None,
-    minor_version: str = '0',
+    minor_version: str = "0",
     api_key: Optional[str] = None,
     init_timeout: Optional[float] = None,
     refresh_timeout: Optional[float] = None,

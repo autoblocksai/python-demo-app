@@ -24,5 +24,3 @@ visit_summary_writer = doctor_gpt.visit_summary_writer_prompt_manager(
     major_version="1",
     minor_version="latest",
 )
-
-
