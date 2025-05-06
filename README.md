@@ -71,6 +71,19 @@ export OPENAI_API_KEY=<your-api-key>
 poetry run run_tests
 ```
 
+## Running in CI
+
+First, fork the repository to your own GitHub account.
+
+Then, set the following repository secrets:
+
+1. `AUTOBLOCKS_V2_API_KEY`
+2. `OPENAI_API_KEY`
+
+**Note:** You can view how these are used in the [`.github/workflows/autoblocks_tests.yml`](.github/workflows/autoblocks_tests.yml) file.
+
+Now you can run the workflow in the Actions tab on the GitHub UI.
+
 ## View results
 
 Go to your application at [app-v2.autoblocks.ai](https://app-v2.autoblocks.ai) and view the results.
