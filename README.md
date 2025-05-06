@@ -47,6 +47,8 @@ Next you will need to create the following prompts:
 
 ## Set environment variables
 
+You can either create a `.env` file (copy from `.env.example`) in the root of the project or set the following environment variables:
+
 ```bash
 export AUTOBLOCKS_V2_API_KEY=<your-api-key>
 ```
