@@ -37,7 +37,7 @@
 
 Create a new app of type Prompt named "Doctor GPT" in the Autoblocks platform.
 
-Next you will need to create the following prompts and deploy them:
+## Create prompts in the Docter GPT app
 
 ### clinical_answerer
 
