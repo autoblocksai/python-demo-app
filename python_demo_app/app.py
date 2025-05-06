@@ -3,8 +3,10 @@ from typing import Literal
 
 from autoblocks.tracer import init_auto_tracer
 from autoblocks.tracer import trace_app
+from dotenv import load_dotenv
 from openai import AsyncOpenAI
 from opentelemetry import trace
+from opentelemetry.instrumentation.openai import OpenAIInstrumentor
 
 from python_demo_app.models import Output
 from python_demo_app.prompt_managers import clinical_answerer
@@ -13,7 +15,9 @@ from python_demo_app.prompt_managers import patient_history_summarizer
 from python_demo_app.prompt_managers import soap_generator
 from python_demo_app.prompt_managers import visit_summary_writer
 
+load_dotenv()
 init_auto_tracer(api_key=os.getenv("AUTOBLOCKS_V2_API_KEY"), is_batch_disabled=True)
+OpenAIInstrumentor().instrument()
 tracer = trace.get_tracer(__name__)
 openai_client = AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
