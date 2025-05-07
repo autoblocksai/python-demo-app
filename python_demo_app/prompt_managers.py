@@ -1,4 +1,8 @@
+from dotenv import load_dotenv
+
 from python_demo_app.autoblocks_prompts import doctor_gpt
+
+load_dotenv()
 
 clinical_answerer = doctor_gpt.clinical_answerer_prompt_manager(
     major_version="1",

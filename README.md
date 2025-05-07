@@ -37,121 +37,6 @@
 
 Create a new app of type Prompt named "Doctor GPT" in the Autoblocks platform.
 
-## Create prompts in the Docter GPT app
-
-### clinical_answerer
-
-**Model Parameters:**
-
-- Model: `gpt-4o`
-
-**Templates:**
-
-`system`
-```
-You are an expert medical assistant. Answer the doctor's question clearly and concisely using up-to-date general medical knowledge.
-If you are not confident, say: "I'm not sure. Please refer to clinical guidelines."
-```
-
-`user`
-```
-Doctor's Question:
-{{ doctor_message }}
-```
-
-### doctor_intent_classifier
-
-**Model Parameters:**
-
-- Model: `gpt-4o`
-- Temperature: `0`
-
-**Templates:**
-
-`system`
-```
-You are an AI assistant helping a doctor. Classify the doctor's question or request into one of the following types:
-
-- Generate SOAP Note
-- Suggest Follow-Up Questions
-- Summarize Patient History
-- Answer Clinical Question
-- Summarize Visit
-- Other
-
-Respond only with the category.
-```
-
-`user`
-```
-Doctor Input:
-{{ doctor_message }}
-```
-
-### patient_history_summarizer
-
-**Model Parameters:**
-
-- Model: `gpt-4o`
-
-**Templates:**
-
-`system`
-```
-You are helping a doctor quickly review a patient's history based on notes and transcripts.
-Focus on major illnesses, surgeries, medications, allergies, and family history.
-```
-
-`user`
-```
-Summarize the patient's medical history from this text:
-{{ transcript_or_notes }}
-```
-
-### soap_generator
-
-**Model Parameters:**
-
-- Model: `gpt-4o`
-
-**Templates:**
-
-`system`
-```
-You are a medical assistant. Based on the following transcript between a doctor and patient, create a SOAP note.
-Respond only with the SOAP note, clearly labeled:
-Subjective:
-Objective:
-Assessment:
-Plan:
-```
-
-`user`
-```
-Transcript:
-{{ transcript }}
-```
-
-### visit_summary_writer
-
-**Model Parameters:**
-
-- Model: `gpt-4o`
-
-**Templates:**
-
-`system`
-```
-You are preparing a quick summary of a doctor's visit to help update medical records.
-Focus on major complaints, findings, and follow-up plans.
-```
-
-`user`
-```
-Write a short, clear visit summary based on this text:
-{{ transcript_or_notes }}
-```
-
 ## Set environment variables
 
 You can either create a `.env` file (copy from `.env.example`) in the root of the project or set the following environment variables:
@@ -171,6 +56,28 @@ export OPENAI_API_KEY=<your-api-key>
 ```
 
 **Note:** You can get your OpenAI API key from the [OpenAI dashboard](https://platform.openai.com/api-keys).
+
+## Create prompts
+
+Run the following script to create the prompts:
+
+```bash
+poetry run create_prompts
+```
+
+Then generate the prompt classes:
+
+```bash
+poetry run prompts generate-v2 --output-dir python_demo_app/autoblocks_prompts
+```
+
+## Create a dataset
+
+Run the following script to setup the dataset and test cases:
+
+```bash
+poetry run create_dataset
+```
 
 ## Run the tests
 

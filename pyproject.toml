@@ -7,7 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
-autoblocksai = "^0.0.119"
+autoblocksai = "^0.0.121"
 openai = "^1.76.0"
 dotenv = "^0.9.9"
 opentelemetry-instrumentation-openai = "^0.40.2"
@@ -18,6 +18,8 @@ pre-commit = "^4.0.0"
 [tool.poetry.scripts]
 # This will execute the run() function in my_project/run.py
 run_tests = "tests.test:run_tests"
+create_dataset = "scripts.create_dataset:create"
+create_prompts = "scripts.create_prompts:create"
 
 [build-system]
 requires = ["poetry-core"]
