@@ -45,3 +45,4 @@ jobs:
           AUTOBLOCKS_V2_API_KEY: ${{ secrets.AUTOBLOCKS_V2_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          AUTOBLOCKS_OVERRIDES: ${{ inputs.autoblocks-overrides }}
