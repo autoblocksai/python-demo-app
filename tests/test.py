@@ -29,7 +29,11 @@ class TestCase(BaseTestCase):
 
 def run_tests():
     test_cases: list[TestCase] = []
+    # Get all selected
     selected_datasets = get_selected_datasets()
+    if len(selected_datasets) == 0:
+        selected_datasets = ["test-cases"]
+
     for dataset in selected_datasets:
         dataset_items = client.datasets.get_items(external_id=dataset)
         test_cases.extend(
