@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 
 from autoblocks.api.app_client import AutoblocksAppClient
+from autoblocks.datasets.utils import get_selected_datasets
 from autoblocks.testing.models import BaseTestCase
 from autoblocks.testing.util import md5
 from autoblocks.testing.v2.run import run_test_suite
@@ -27,15 +28,20 @@ class TestCase(BaseTestCase):
 
 
 def run_tests():
-    dataset_items = client.datasets.get_items(external_id="test-cases")
-    test_cases: list[TestCase] = [
-        TestCase(
-            question=item.data["Question"],
-            expected_router_output=item.data["Expected Router Output"],
-            expected_answer=item.data["Expected Answer"],
+    test_cases: list[TestCase] = []
+    selected_datasets = get_selected_datasets()
+    for dataset in selected_datasets:
+        dataset_items = client.datasets.get_items(external_id=dataset)
+        test_cases.extend(
+            [
+                TestCase(
+                    question=item.data["Question"],
+                    expected_router_output=item.data["Expected Router Output"],
+                    expected_answer=item.data["Expected Answer"],
+                )
+                for item in dataset_items
+            ]
         )
-        for item in dataset_items
-    ]
 
     async def test_fn(test_case: TestCase) -> Output:
         return await run(test_case.question)
