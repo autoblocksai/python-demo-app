@@ -89,6 +89,8 @@ poetry run run_tests
 
 First, fork the repository to your own GitHub account.
 
+**Note:** After forking, you will need to enable actions on the forked repository. See [this issue](https://github.com/github/docs/issues/15761) for more information.
+
 Then, set the following repository secrets:
 
 1. `AUTOBLOCKS_V2_API_KEY`
