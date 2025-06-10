@@ -8,6 +8,61 @@ on:
         type: string
         description: Overrides for Autoblocks-managed entities
         required: false
+      app-ids:
+        type: string
+        description: Specific app ID(s) to test (comma-separated, e.g., kenvue-listering-image-to-alt-text,enlyte_medical_summarization)
+        required: false
+      customers:
+        type: string
+        description: Customer(s) to test (comma-separated, e.g., kenvue,loreal)
+        required: false
+      app-pattern:
+        type: string
+        description: App pattern to match (glob syntax, e.g., *-image-to-*)
+        required: false
+      customer-pattern:
+        type: string
+        description: Customer pattern to match (glob syntax, e.g., l*)
+        required: false
+      environment:
+        type: choice
+        description: Environment to test (e.g., test, dev)
+        required: true
+        default: dev
+        options:
+          - dev
+          - test
+          - staging
+          - prod
+      use-v2-datasets:
+        type: boolean
+        description: Use Autoblocks V2 UI datasets instead of local files
+        required: false
+        default: false
+      dataset-name:
+        type: string
+        description: Specific dataset name to use with Autoblocks V2 (overrides app_config.dataset_name and app_id)
+        required: false
+      skip-file-upload:
+        type: boolean
+        description: Skip the file upload step (useful when using Autoblocks V2 datasets)
+        required: false
+        default: false
+      test-timeout:
+        type: string
+        description: Test timeout in minutes
+        required: false
+        default: '30'
+      log-level:
+        type: choice
+        description: Logging level for test execution
+        required: false
+        default: info
+        options:
+          - debug
+          - info
+          - warning
+          - error
 
 permissions:
   # Allow commenting on pull requests
@@ -46,3 +101,13 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           AUTOBLOCKS_OVERRIDES: ${{ inputs.autoblocks-overrides }}
+          APP_IDS: ${{ inputs.app-ids }}
+          CUSTOMERS: ${{ inputs.customers }}
+          APP_PATTERN: ${{ inputs.app-pattern }}
+          CUSTOMER_PATTERN: ${{ inputs.customer-pattern }}
+          ENVIRONMENT: ${{ inputs.environment }}
+          USE_V2_DATASETS: ${{ inputs.use-v2-datasets }}
+          DATASET_NAME: ${{ inputs.dataset-name }}
+          SKIP_FILE_UPLOAD: ${{ inputs.skip-file-upload }}
+          TEST_TIMEOUT: ${{ inputs.test-timeout }}
+          LOG_LEVEL: ${{ inputs.log-level }}
