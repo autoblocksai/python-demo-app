@@ -8,6 +8,26 @@ on:
         type: string
         description: Overrides for Autoblocks-managed entities
         required: false
+      environment:
+        type: choice
+        description: Environment to test (e.g., test, dev)
+        required: true
+        default: dev
+        options:
+          - dev
+          - test
+          - staging
+          - prod
+      log-level:
+        type: choice
+        description: Logging level for test execution
+        required: false
+        default: info
+        options:
+          - debug
+          - info
+          - warning
+          - error
 
 permissions:
   # Allow commenting on pull requests
@@ -46,3 +66,5 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           AUTOBLOCKS_OVERRIDES: ${{ inputs.autoblocks-overrides }}
+          ENVIRONMENT: ${{ inputs.environment }}
+          LOG_LEVEL: ${{ inputs.log-level }}
