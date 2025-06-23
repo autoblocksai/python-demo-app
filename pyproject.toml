@@ -18,6 +18,7 @@ pre-commit = "^4.0.0"
 [tool.poetry.scripts]
 # This will execute the run() function in my_project/run.py
 run_tests = "tests.test:run_tests"
+test_templates = "tests.test_template_logging:test_clinical_answerer_templates"
 create_dataset = "scripts.create_dataset:create"
 create_prompts = "scripts.create_prompts:create"
 test_revision_overrides = "scripts.test_revision_overrides:main"
