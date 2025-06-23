@@ -39,6 +39,15 @@ jobs:
           AUTOBLOCKS_V2_API_KEY: ${{ secrets.AUTOBLOCKS_V2_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Run template logging tests
+        run: poetry run test_templates
+        env:
+          AUTOBLOCKS_V2_API_KEY: ${{ secrets.AUTOBLOCKS_V2_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          AUTOBLOCKS_OVERRIDES: ${{ inputs.autoblocks-overrides }}
+          AUTOBLOCKS_CLI_SERVER_ADDRESS: "some-value"
+
       - name: Run tests
         run: poetry run run_tests
         env:
@@ -46,3 +55,4 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           AUTOBLOCKS_OVERRIDES: ${{ inputs.autoblocks-overrides }}
+          AUTOBLOCKS_CLI_SERVER_ADDRESS: "some-value"
