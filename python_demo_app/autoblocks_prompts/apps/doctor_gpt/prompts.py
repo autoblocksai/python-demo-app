@@ -1,14 +1,15 @@
 from typing import Any
 from typing import Dict
+from typing import List
 from typing import Optional
 from typing import Union
 
 import pydantic
+
+from autoblocks.prompts.v2.models import FrozenModel
 from autoblocks.prompts.v2.context import PromptExecutionContext
 from autoblocks.prompts.v2.manager import AutoblocksPromptManager
-from autoblocks.prompts.v2.models import FrozenModel
-from autoblocks.prompts.v2.renderer import TemplateRenderer
-from autoblocks.prompts.v2.renderer import ToolRenderer
+from autoblocks.prompts.v2.renderer import TemplateRenderer, ToolRenderer
 
 
 class _ClinicalAnswererV1Params(FrozenModel):
@@ -19,14 +20,12 @@ class _ClinicalAnswererV1TemplateRenderer(TemplateRenderer):
     __name_mapper__ = {
         "doctor_message": "doctor_message",
     }
-
     def system(
         self,
     ) -> str:
         return self._render(
             "system",
         )
-
     def user(
         self,
         *,
@@ -42,11 +41,7 @@ class _ClinicalAnswererV1ToolRenderer(ToolRenderer):
     __name_mapper__ = {}
 
 
-class _ClinicalAnswererV1ExecutionContext(
-    PromptExecutionContext[
-        _ClinicalAnswererV1Params, _ClinicalAnswererV1TemplateRenderer, _ClinicalAnswererV1ToolRenderer
-    ]
-):
+class _ClinicalAnswererV1ExecutionContext(PromptExecutionContext[_ClinicalAnswererV1Params, _ClinicalAnswererV1TemplateRenderer, _ClinicalAnswererV1ToolRenderer]):
     __params_class__ = _ClinicalAnswererV1Params
     __template_renderer_class__ = _ClinicalAnswererV1TemplateRenderer
     __tool_renderer_class__ = _ClinicalAnswererV1ToolRenderer
@@ -71,18 +66,18 @@ class ClinicalAnswererFactory:
     ) -> _ClinicalAnswererV1PromptManager:
         kwargs: Dict[str, Any] = {}
         if api_key is not None:
-            kwargs["api_key"] = api_key
+            kwargs['api_key'] = api_key
         if init_timeout is not None:
-            kwargs["init_timeout"] = init_timeout
+            kwargs['init_timeout'] = init_timeout
         if refresh_timeout is not None:
-            kwargs["refresh_timeout"] = refresh_timeout
+            kwargs['refresh_timeout'] = refresh_timeout
         if refresh_interval is not None:
-            kwargs["refresh_interval"] = refresh_interval
+            kwargs['refresh_interval'] = refresh_interval
 
         if major_version is None:
-            major_version = "1"  # Latest version
+            major_version = '1'  # Latest version
 
-        if major_version == "1":
+        if major_version == '1':
             return _ClinicalAnswererV1PromptManager(minor_version=minor_version, **kwargs)
 
         raise ValueError("Unsupported major version. Available versions: 1")
@@ -97,14 +92,12 @@ class _DoctorIntentClassifierV1TemplateRenderer(TemplateRenderer):
     __name_mapper__ = {
         "doctor_message": "doctor_message",
     }
-
     def system(
         self,
     ) -> str:
         return self._render(
             "system",
         )
-
     def user(
         self,
         *,
@@ -120,13 +113,7 @@ class _DoctorIntentClassifierV1ToolRenderer(ToolRenderer):
     __name_mapper__ = {}
 
 
-class _DoctorIntentClassifierV1ExecutionContext(
-    PromptExecutionContext[
-        _DoctorIntentClassifierV1Params,
-        _DoctorIntentClassifierV1TemplateRenderer,
-        _DoctorIntentClassifierV1ToolRenderer,
-    ]
-):
+class _DoctorIntentClassifierV1ExecutionContext(PromptExecutionContext[_DoctorIntentClassifierV1Params, _DoctorIntentClassifierV1TemplateRenderer, _DoctorIntentClassifierV1ToolRenderer]):
     __params_class__ = _DoctorIntentClassifierV1Params
     __template_renderer_class__ = _DoctorIntentClassifierV1TemplateRenderer
     __tool_renderer_class__ = _DoctorIntentClassifierV1ToolRenderer
@@ -151,18 +138,18 @@ class DoctorIntentClassifierFactory:
     ) -> _DoctorIntentClassifierV1PromptManager:
         kwargs: Dict[str, Any] = {}
         if api_key is not None:
-            kwargs["api_key"] = api_key
+            kwargs['api_key'] = api_key
         if init_timeout is not None:
-            kwargs["init_timeout"] = init_timeout
+            kwargs['init_timeout'] = init_timeout
         if refresh_timeout is not None:
-            kwargs["refresh_timeout"] = refresh_timeout
+            kwargs['refresh_timeout'] = refresh_timeout
         if refresh_interval is not None:
-            kwargs["refresh_interval"] = refresh_interval
+            kwargs['refresh_interval'] = refresh_interval
 
         if major_version is None:
-            major_version = "1"  # Latest version
+            major_version = '1'  # Latest version
 
-        if major_version == "1":
+        if major_version == '1':
             return _DoctorIntentClassifierV1PromptManager(minor_version=minor_version, **kwargs)
 
         raise ValueError("Unsupported major version. Available versions: 1")
@@ -176,14 +163,12 @@ class _PatientHistorySummarizerV1TemplateRenderer(TemplateRenderer):
     __name_mapper__ = {
         "transcript_or_notes": "transcript_or_notes",
     }
-
     def system(
         self,
     ) -> str:
         return self._render(
             "system",
         )
-
     def user(
         self,
         *,
@@ -199,13 +184,7 @@ class _PatientHistorySummarizerV1ToolRenderer(ToolRenderer):
     __name_mapper__ = {}
 
 
-class _PatientHistorySummarizerV1ExecutionContext(
-    PromptExecutionContext[
-        _PatientHistorySummarizerV1Params,
-        _PatientHistorySummarizerV1TemplateRenderer,
-        _PatientHistorySummarizerV1ToolRenderer,
-    ]
-):
+class _PatientHistorySummarizerV1ExecutionContext(PromptExecutionContext[_PatientHistorySummarizerV1Params, _PatientHistorySummarizerV1TemplateRenderer, _PatientHistorySummarizerV1ToolRenderer]):
     __params_class__ = _PatientHistorySummarizerV1Params
     __template_renderer_class__ = _PatientHistorySummarizerV1TemplateRenderer
     __tool_renderer_class__ = _PatientHistorySummarizerV1ToolRenderer
@@ -230,18 +209,18 @@ class PatientHistorySummarizerFactory:
     ) -> _PatientHistorySummarizerV1PromptManager:
         kwargs: Dict[str, Any] = {}
         if api_key is not None:
-            kwargs["api_key"] = api_key
+            kwargs['api_key'] = api_key
         if init_timeout is not None:
-            kwargs["init_timeout"] = init_timeout
+            kwargs['init_timeout'] = init_timeout
         if refresh_timeout is not None:
-            kwargs["refresh_timeout"] = refresh_timeout
+            kwargs['refresh_timeout'] = refresh_timeout
         if refresh_interval is not None:
-            kwargs["refresh_interval"] = refresh_interval
+            kwargs['refresh_interval'] = refresh_interval
 
         if major_version is None:
-            major_version = "1"  # Latest version
+            major_version = '1'  # Latest version
 
-        if major_version == "1":
+        if major_version == '1':
             return _PatientHistorySummarizerV1PromptManager(minor_version=minor_version, **kwargs)
 
         raise ValueError("Unsupported major version. Available versions: 1")
@@ -255,14 +234,12 @@ class _SoapGeneratorV1TemplateRenderer(TemplateRenderer):
     __name_mapper__ = {
         "transcript": "transcript",
     }
-
     def system(
         self,
     ) -> str:
         return self._render(
             "system",
         )
-
     def user(
         self,
         *,
@@ -278,9 +255,7 @@ class _SoapGeneratorV1ToolRenderer(ToolRenderer):
     __name_mapper__ = {}
 
 
-class _SoapGeneratorV1ExecutionContext(
-    PromptExecutionContext[_SoapGeneratorV1Params, _SoapGeneratorV1TemplateRenderer, _SoapGeneratorV1ToolRenderer]
-):
+class _SoapGeneratorV1ExecutionContext(PromptExecutionContext[_SoapGeneratorV1Params, _SoapGeneratorV1TemplateRenderer, _SoapGeneratorV1ToolRenderer]):
     __params_class__ = _SoapGeneratorV1Params
     __template_renderer_class__ = _SoapGeneratorV1TemplateRenderer
     __tool_renderer_class__ = _SoapGeneratorV1ToolRenderer
@@ -305,18 +280,18 @@ class SoapGeneratorFactory:
     ) -> _SoapGeneratorV1PromptManager:
         kwargs: Dict[str, Any] = {}
         if api_key is not None:
-            kwargs["api_key"] = api_key
+            kwargs['api_key'] = api_key
         if init_timeout is not None:
-            kwargs["init_timeout"] = init_timeout
+            kwargs['init_timeout'] = init_timeout
         if refresh_timeout is not None:
-            kwargs["refresh_timeout"] = refresh_timeout
+            kwargs['refresh_timeout'] = refresh_timeout
         if refresh_interval is not None:
-            kwargs["refresh_interval"] = refresh_interval
+            kwargs['refresh_interval'] = refresh_interval
 
         if major_version is None:
-            major_version = "1"  # Latest version
+            major_version = '1'  # Latest version
 
-        if major_version == "1":
+        if major_version == '1':
             return _SoapGeneratorV1PromptManager(minor_version=minor_version, **kwargs)
 
         raise ValueError("Unsupported major version. Available versions: 1")
@@ -330,14 +305,12 @@ class _VisitSummaryWriterV1TemplateRenderer(TemplateRenderer):
     __name_mapper__ = {
         "transcript_or_notes": "transcript_or_notes",
     }
-
     def system(
         self,
     ) -> str:
         return self._render(
             "system",
         )
-
     def user(
         self,
         *,
@@ -353,11 +326,7 @@ class _VisitSummaryWriterV1ToolRenderer(ToolRenderer):
     __name_mapper__ = {}
 
 
-class _VisitSummaryWriterV1ExecutionContext(
-    PromptExecutionContext[
-        _VisitSummaryWriterV1Params, _VisitSummaryWriterV1TemplateRenderer, _VisitSummaryWriterV1ToolRenderer
-    ]
-):
+class _VisitSummaryWriterV1ExecutionContext(PromptExecutionContext[_VisitSummaryWriterV1Params, _VisitSummaryWriterV1TemplateRenderer, _VisitSummaryWriterV1ToolRenderer]):
     __params_class__ = _VisitSummaryWriterV1Params
     __template_renderer_class__ = _VisitSummaryWriterV1TemplateRenderer
     __tool_renderer_class__ = _VisitSummaryWriterV1ToolRenderer
@@ -382,18 +351,18 @@ class VisitSummaryWriterFactory:
     ) -> _VisitSummaryWriterV1PromptManager:
         kwargs: Dict[str, Any] = {}
         if api_key is not None:
-            kwargs["api_key"] = api_key
+            kwargs['api_key'] = api_key
         if init_timeout is not None:
-            kwargs["init_timeout"] = init_timeout
+            kwargs['init_timeout'] = init_timeout
         if refresh_timeout is not None:
-            kwargs["refresh_timeout"] = refresh_timeout
+            kwargs['refresh_timeout'] = refresh_timeout
         if refresh_interval is not None:
-            kwargs["refresh_interval"] = refresh_interval
+            kwargs['refresh_interval'] = refresh_interval
 
         if major_version is None:
-            major_version = "1"  # Latest version
+            major_version = '1'  # Latest version
 
-        if major_version == "1":
+        if major_version == '1':
             return _VisitSummaryWriterV1PromptManager(minor_version=minor_version, **kwargs)
 
         raise ValueError("Unsupported major version. Available versions: 1")

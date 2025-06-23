@@ -20,6 +20,7 @@ pre-commit = "^4.0.0"
 run_tests = "tests.test:run_tests"
 create_dataset = "scripts.create_dataset:create"
 create_prompts = "scripts.create_prompts:create"
+test_revision_overrides = "scripts.test_revision_overrides:main"
 
 [build-system]
 requires = ["poetry-core"]

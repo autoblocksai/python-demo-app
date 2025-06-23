@@ -12,49 +12,39 @@ from autoblocks.prompts.v2.manager import AutoblocksPromptManager
 from autoblocks.prompts.v2.renderer import TemplateRenderer, ToolRenderer
 
 
-class _SoapNoteGeneratorV1Params(FrozenModel):
+class _AirlineSupportBotV1Params(FrozenModel):
+    temperature: Union[float, int] = pydantic.Field(..., alias="temperature")
     model: str = pydantic.Field(..., alias="model")
 
 
-class _SoapNoteGeneratorV1TemplateRenderer(TemplateRenderer):
-    __name_mapper__ = {
-        "transcript": "transcript",
-    }
+class _AirlineSupportBotV1TemplateRenderer(TemplateRenderer):
+    __name_mapper__ = {}
     def system(
         self,
     ) -> str:
         return self._render(
             "system",
         )
-    def user(
-        self,
-        *,
-        transcript: str,
-    ) -> str:
-        return self._render(
-            "user",
-            transcript=transcript,
-        )
 
 
-class _SoapNoteGeneratorV1ToolRenderer(ToolRenderer):
+class _AirlineSupportBotV1ToolRenderer(ToolRenderer):
     __name_mapper__ = {}
 
 
-class _SoapNoteGeneratorV1ExecutionContext(PromptExecutionContext[_SoapNoteGeneratorV1Params, _SoapNoteGeneratorV1TemplateRenderer, _SoapNoteGeneratorV1ToolRenderer]):
-    __params_class__ = _SoapNoteGeneratorV1Params
-    __template_renderer_class__ = _SoapNoteGeneratorV1TemplateRenderer
-    __tool_renderer_class__ = _SoapNoteGeneratorV1ToolRenderer
+class _AirlineSupportBotV1ExecutionContext(PromptExecutionContext[_AirlineSupportBotV1Params, _AirlineSupportBotV1TemplateRenderer, _AirlineSupportBotV1ToolRenderer]):
+    __params_class__ = _AirlineSupportBotV1Params
+    __template_renderer_class__ = _AirlineSupportBotV1TemplateRenderer
+    __tool_renderer_class__ = _AirlineSupportBotV1ToolRenderer
 
 
-class _SoapNoteGeneratorV1PromptManager(AutoblocksPromptManager[_SoapNoteGeneratorV1ExecutionContext]):
-    __app_id__ = "hd648cuf5rxpdqgvjqu3m39q"
-    __prompt_id__ = "soap_note_generator"
+class _AirlineSupportBotV1PromptManager(AutoblocksPromptManager[_AirlineSupportBotV1ExecutionContext]):
+    __app_id__ = "nt1umq3cknbgqn7wnahefcb8"
+    __prompt_id__ = "airline-support-bot"
     __prompt_major_version__ = "1"
-    __execution_context_class__ = _SoapNoteGeneratorV1ExecutionContext
+    __execution_context_class__ = _AirlineSupportBotV1ExecutionContext
 
 
-class SoapNoteGeneratorFactory:
+class AirlineSupportBotFactory:
     @staticmethod
     def create(
         major_version: Optional[str] = None,
@@ -63,7 +53,7 @@ class SoapNoteGeneratorFactory:
         init_timeout: Optional[float] = None,
         refresh_timeout: Optional[float] = None,
         refresh_interval: Optional[float] = None,
-    ) -> _SoapNoteGeneratorV1PromptManager:
+    ) -> _AirlineSupportBotV1PromptManager:
         kwargs: Dict[str, Any] = {}
         if api_key is not None:
             kwargs['api_key'] = api_key
@@ -78,6 +68,6 @@ class SoapNoteGeneratorFactory:
             major_version = '1'  # Latest version
 
         if major_version == '1':
-            return _SoapNoteGeneratorV1PromptManager(minor_version=minor_version, **kwargs)
+            return _AirlineSupportBotV1PromptManager(minor_version=minor_version, **kwargs)
 
         raise ValueError("Unsupported major version. Available versions: 1")
